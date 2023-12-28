@@ -1,15 +1,9 @@
 package rest.service;
 
 import org.springframework.stereotype.Service;
+import rest.model.Response;
 
 @Service
 public interface StatisticsService {
-
-    double averageAge();
-
-    int countOfRegisteredUsers();
-
-    int countOfFemales();
-
-    int countOfMales();
+    Response callAllStatistics();
 }

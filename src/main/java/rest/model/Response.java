@@ -2,62 +2,36 @@ package rest.model;
 
 public class Response {
 
-    private double averageAge;
+    private Double averageAge;
 
-    private int countOfRegisteredUsers;
+    private Integer countOfRegisteredUsers;
 
-    private int countOfFemales;
+    private Integer countOfFemales;
 
-    private int countOfMales;
+    private Integer countOfMales;
 
     public Response() {}
 
-    public Response(double averageAge, int countOfRegisteredUsers, int countOfFemales, int countOfMales) {
+    public Response(Double averageAge, Integer countOfRegisteredUsers, Integer countOfFemales, Integer countOfMales) {
         this.averageAge = averageAge;
         this.countOfRegisteredUsers = countOfRegisteredUsers;
         this.countOfFemales = countOfFemales;
         this.countOfMales = countOfMales;
     }
 
-    public double getAverageAge() {
+    public Double getAverageAge() {
         return averageAge;
     }
 
-    public void setAverageAge(double averageAge) {
-        this.averageAge = averageAge;
-    }
-
-    public int getCountOfRegisteredUsers() {
+    public Integer getCountOfRegisteredUsers() {
         return countOfRegisteredUsers;
     }
 
-    public void setCountOfRegisteredUsers(int countOfRegisteredUsers) {
-        this.countOfRegisteredUsers = countOfRegisteredUsers;
-    }
-
-    public int getCountOfFemales() {
+    public Integer getCountOfFemales() {
         return countOfFemales;
     }
 
-    public void setCountOfFemales(int countOfFemales) {
-        this.countOfFemales = countOfFemales;
-    }
-
-    public int getCountOfMales() {
+    public Integer getCountOfMales() {
         return countOfMales;
-    }
-
-    public void setCountOfMales(int countOfMales) {
-        this.countOfMales = countOfMales;
-    }
-
-    @Override
-    public String toString() {
-        return "Response{" +
-                "averageAge=" + averageAge +
-                ", countOfRegisteredUsers=" + countOfRegisteredUsers +
-                ", countOfFemales=" + countOfFemales +
-                ", countOfMales=" + countOfMales +
-                '}';
     }
 }

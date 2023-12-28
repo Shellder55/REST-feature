@@ -2,6 +2,7 @@ package rest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rest.model.Response;
 import rest.repository.UserDao;
 
 @Service
@@ -14,23 +15,10 @@ public class StatisticsServiceImpl implements StatisticsService {
         this.userDao = userDao;
     }
 
-    @Override
-    public double averageAge() {
-        return userDao.averageAge();
-    }
-
-    @Override
-    public int countOfRegisteredUsers() {
-        return userDao.countOfRegisteredUsers();
-    }
-
-    @Override
-    public int countOfFemales() {
-        return userDao.countOfFemales();
-    }
-
-    @Override
-    public int countOfMales() {
-        return userDao.countOfMales();
+    public Response callAllStatistics() {
+        return new Response(userDao.getAverageAge(),
+                userDao.getCountOfRegisteredUsers(),
+                userDao.getCountOfFemales(),
+                userDao.getCountOfMales());
     }
 }

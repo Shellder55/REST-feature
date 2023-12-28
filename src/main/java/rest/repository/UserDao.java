@@ -8,46 +8,37 @@ import java.util.List;
 
 @Repository
 public class UserDao {
-
     private final UserRepository userRepository;
+    private List<User> userList;
 
     @Autowired
     public UserDao(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public double averageAge() {
-        List<User> allUsers = userRepository.findAll();
+    public Double getAverageAge() {
         double average = 0;
-        for (User user : allUsers) {
-            average += user.getAge();
-        }
-        return average / allUsers.size();
+        userList = userRepository.findAll();
+        return userList.stream()
+                .mapToDouble(s -> (s.getAge() + average) / userList.size())
+                .sum();
     }
 
-    public int countOfRegisteredUsers() {
+    public Integer getCountOfRegisteredUsers() {
         return userRepository.findAll().size();
     }
 
-    public int countOfFemales() {
-        List<User> allUsers = userRepository.findAll();
-        int count = 0;
-        for (User user : allUsers) {
-            if (user.getGender().contains("Female")) {
-                count++;
-            }
-        }
-        return count;
+    public Integer getCountOfFemales() {
+        userList = userRepository.findAll();
+        return Math.toIntExact(userList.stream()
+                .filter(s -> s.getGender().contains("Female"))
+                .count());
     }
 
-    public int countOfMales() {
-        List<User> allUsers = userRepository.findAll();
-        int count = 0;
-        for (User user : allUsers) {
-            if (user.getGender().contains("Male")) {
-                count++;
-            }
-        }
-        return count;
+    public Integer getCountOfMales() {
+        userList = userRepository.findAll();
+        return Math.toIntExact(userList.stream()
+                .filter(s -> s.getGender().contains("Male"))
+                .count());
     }
 }

@@ -5,29 +5,23 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import rest.model.Response;
 import rest.service.StatisticsService;
 
-@RestController
-@RequestMapping("/statistics")
+@org.springframework.web.bind.annotation.RestController
+@RequestMapping("/rest/v1/statistics")
 @Api
-public class RestAdminController {
-    private final Response response = new Response();
+public class RestStatisticsController {
     private final StatisticsService statisticsService;
 
     @Autowired
-    public RestAdminController(StatisticsService statisticsService) {
+    public RestStatisticsController(StatisticsService statisticsService) {
         this.statisticsService = statisticsService;
     }
 
     @GetMapping
     @ApiOperation("Получение статистики по всем пользователям")
     public Response allStatistics() {
-        response.setAverageAge(statisticsService.averageAge());
-        response.setCountOfRegisteredUsers(statisticsService.countOfRegisteredUsers());
-        response.setCountOfFemales(statisticsService.countOfFemales());
-        response.setCountOfMales(statisticsService.countOfMales());
-        return response;
+      return statisticsService.callAllStatistics();
     }
 }
