@@ -1,7 +1,7 @@
 package rest.service;
 
 import org.springframework.stereotype.Service;
-import rest.model.Response;
+import rest.dto.Response;
 
 @Service
 public interface StatisticsService {
