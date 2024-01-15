@@ -1,9 +1,9 @@
 package rest.service;
 
 import org.springframework.stereotype.Service;
-import rest.dto.Response;
+import rest.dto.ResponseUserStatistics;
 
 @Service
 public interface StatisticsService {
-    Response callAllStatistics();
+    ResponseUserStatistics callAllStatistics();
 }
